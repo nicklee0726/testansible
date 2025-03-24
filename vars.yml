@@ -1,0 +1,10 @@
+name1: "John Doe"
+
+names:
+  - "alpha"
+  - "bravo"
+  - "charlie"
+  - "delta"
+  - "echo"
+
+webport: 8009

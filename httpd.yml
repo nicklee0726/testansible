@@ -1,0 +1,22 @@
+---
+- name: change http port
+  hosts: all
+  become: true
+
+  vars_files:
+    vars.yml
+
+  tasks:
+    - name: change httpd.conf
+      lineinfile:
+        dest: /etc/httpd/conf/httpd.conf
+        regexp: '^Listen [0-9]{1,5}$'
+        line: 'Listen {{ webport }}'
+      notify:
+        - restart httpd
+  
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: restarted
